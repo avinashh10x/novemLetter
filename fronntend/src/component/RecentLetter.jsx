@@ -17,9 +17,10 @@ function RecentLetter() {
     const fetchLetters = async () => {
       try {
         const data = await getAllLetters();
-        setLetters(data.letters);
+        setLetters((data && data.letters) ? data.letters : []); // Fix: default to [] if undefined
       } catch (error) {
         console.error("Error fetching letters:", error);
+        setLetters([]); // Also set to [] on error
       }
     };
     fetchLetters();
