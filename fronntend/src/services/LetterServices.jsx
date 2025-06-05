@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = `${import.meta.env.VITE_API_URL}/api/`;
+const API_URL = `${import.meta.env.API_URL}/api/`;
 
 //  Get all Letters
 const getAllLetters = async (page = 1, limit = 5) => {
