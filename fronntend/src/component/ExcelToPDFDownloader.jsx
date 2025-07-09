@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
 import { pdf } from "@react-pdf/renderer";
-import MyDocument from "../PDF/MyDocument";
+import MyDocument from "../Formats/Letter/MyDocument";
 import { ArrowDownTrayIcon } from "@heroicons/react/24/solid";
+import NewLetterLayout from "../Formats/Letter/NewLetterLayout";
+import ConfirmationLetterFormate from "../PDF/ConfirmationLetterFormate";
 
 function ExcelToPDFDownloader({ letters }) {
     const [progress, setProgress] = useState(0);
@@ -30,7 +32,8 @@ function ExcelToPDFDownloader({ letters }) {
         for (let i = 0; i < letters.length; i++) {
             const letter = letters[i];
             setCurrentLetter(letter.name);
-            const doc = <MyDocument selectedLetter={letter} />;
+            // const doc = <NewLetterLayout selectedLetter={letter} />;
+            const doc = <ConfirmationLetterFormate selectedLetter={letter} />;
             const asPdf = pdf([]); // create a new PDF instance
             asPdf.updateContainer(doc);
             const blob = await asPdf.toBlob();

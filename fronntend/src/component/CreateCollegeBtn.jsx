@@ -6,11 +6,25 @@ import toast from 'react-hot-toast';
 export default function CreateCollegeBtn({ onCollegeAdded }) {
     const [showModal, setShowModal] = React.useState(false);
     const [collegeName, setCollegeName] = React.useState('');
+    const [collageLocation, setCollageLocation] = React.useState('');   
+
 
     const createCollage = async (e) => {
+
+       
+
         try {
+            const collegeNameTrimmed = collegeName.trim();
+            const collageLocationTrimmed = collageLocation.trim();
+
+            const collegeDetails = {
+                collegeName: collegeNameTrimmed,
+                location: collageLocationTrimmed
+            }
+            console.log("College Details:", collegeDetails);
+
             e.preventDefault();
-            const response = await saveCollageName(collegeName);
+            const response = await saveCollageName(collegeDetails);
             toast.success("College created successfully");
             setCollegeName('');
             setShowModal(false);
@@ -48,6 +62,7 @@ export default function CreateCollegeBtn({ onCollegeAdded }) {
                         <h2 className="text-2xl font-semibold mb-6 text-center text-gray-700">Add College</h2>
                         <div className="">
                             <input type="text" name="name" value={collegeName} onChange={(e) => setCollegeName(e.target.value)} placeholder="College Name" required className="w-full p-3 border text-black text-lg border-blue-600 rounded-lg" />
+                            <input type="text" name="name" value={collageLocation} onChange={(e) => setCollageLocation(e.target.value)} placeholder="College Name" required className="w-full p-3 border text-black text-lg border-blue-600 rounded-lg" />
                             <div className="mt-4">
                                 <button type="submit" onClick={createCollage} className="w-full bg-blue-600 text-white py-2 rounded-lg text-lg font-medium hover:bg-blue-700 transition duration-300">Add</button>
                             </div>

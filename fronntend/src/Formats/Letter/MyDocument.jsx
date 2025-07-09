@@ -1,6 +1,6 @@
 import { Document, Page, Text, View, StyleSheet, Image, Link, Font } from '@react-pdf/renderer';
-import signature from '../assets/signature.jpg';
-import logoImg from '../assets/novem_controls-removebg-preview.jpg';
+import signature from '../../assets/signature.jpg';
+import logoImg from '../../assets/novem_controls-removebg-preview.jpg';
 
 const styles = StyleSheet.create({
 
@@ -95,8 +95,8 @@ function MyDocument({ selectedLetter }) {
             <Text>The Director</Text>
 
             <Text>Training & Placement Office</Text>
-            <Text>I.K. Gujral Punjab Technical University Mohali Campus - I</Text>
-            <Text>Mohali, Punjab</Text>
+            <Text>{selectedLetter.collegeName || 'IK Gujral Punjab Technical University'}</Text>
+            <Text>{selectedLetter.collegeLocation || 'Mohali, Punjab'}</Text>
           </View>
 
           <Text style={styles.title}>CONFIRMATION OF {selectedLetter.trainingPeriod.toUpperCase()} INTERNSHIP PROGRAM</Text>

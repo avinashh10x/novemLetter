@@ -4,7 +4,8 @@ import LetterPDF from './LetterPDF'
 import { useContext } from 'react'
 import { MyContext } from '../context/LetterContext'
 import ShowPdf from '../PDF/ShowPdf'
-import MyDocument from '../PDF/MyDocument'
+import MyDocument from '../Formats/Letter/MyDocument'
+import ConfirmationLetterFormate from '../PDF/ConfirmationLetterFormate'
 
 
 function ToolBar() {
@@ -17,9 +18,10 @@ function ToolBar() {
   return (
     <div className=' w-full flex bg-[#282828] justify-end items-center p-5'>
       {/* <PDFDownloadLink document={<ShowPdf />} fileName={`${selectedLetter?.name || 'ConfirmationLetter'}.pdf`}> */}
-      <PDFDownloadLink document={<MyDocument selectedLetter={selectedLetter} />} fileName={PDF_name}>
+      <PDFDownloadLink document={<ConfirmationLetterFormate selectedLetter={selectedLetter} />} fileName={PDF_name}>
         <FolderArrowDownIcon className='size-10 mx-5 text-white cursor-pointer hover:text-gray-400 duration-300' />
       </PDFDownloadLink>
+      
 
     </div>
   )
